@@ -386,6 +386,7 @@ main {
 }
 
 /* SIGNATURE SECTION */
+/* SIGNATURE SECTION - UPDATED */
 .signature-section {
     border-top: 1px solid var(--gray-300);
     padding-top: 4rem;
@@ -419,11 +420,47 @@ main {
     align-items: end;
 }
 
+.signature-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid var(--gray-300);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.signature-section.visible .profile-image {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+}
+
+.profile-image:hover img {
+    filter: grayscale(0%);
+}
+
 .signature-name {
     font-family: var(--serif);
-    font-size: clamp(3rem, 6vw, 6rem);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 500;
-    line-height: 1;
+    line-height: 1.1;
     letter-spacing: -0.03em;
 }
 
@@ -488,53 +525,33 @@ main {
     transform: rotate(-180deg);
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE - UPDATED */
 @media (max-width: 1024px) {
-    .chapter-container {
-        padding: 0 2rem;
-    }
-    
-    .chapter-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .chapter-header {
-        position: static;
-    }
-    
-    .dual-column {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
     .signature-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
     
-    .younicorn-grid {
+    .signature-left {
         flex-direction: column;
-        gap: 2rem;
+        align-items: flex-start;
+        gap: 1.5rem;
     }
     
-    .trait-divider {
-        transform: rotate(90deg);
+    .profile-image {
+        width: 100px;
+        height: 100px;
     }
 }
 
 @media (max-width: 768px) {
-    .time-indicator {
-        top: 2rem;
-        right: 2rem;
+    .profile-image {
+        width: 80px;
+        height: 80px;
     }
     
-    .chapter-number {
-        left: 2rem;
-    }
-    
-    .chapter {
-        padding: 4rem 0;
+    .signature-name {
+        font-size: 2rem;
     }
 }
 
